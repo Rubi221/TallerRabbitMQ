@@ -1,7 +1,9 @@
-package com.example.publisher1.publisher;
+package com.example.publisher3.publisher;
 
-import com.example.publisher1.config.MqConfig;
-import com.example.publisher1.domain.Publicacion;
+
+
+import com.example.publisher3.domain.Publicacion;
+import com.example.publisher3.config.*;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -13,11 +15,11 @@ public class rabbitPublisher {
     @Autowired
     private RabbitTemplate template;
 
-    @PostMapping("publica1")
+    @PostMapping("publica3")
     public String bookOrder(@RequestBody Publicacion publicacion) {
 
         template.convertAndSend(MqConfig.EXCHANGE, MqConfig.ROUTING_KEY, publicacion);
-        return "Se publlicó desde publisher 1 !!";
+        return "Se publicó desde publisher 3 !!";
     }
 
 }
